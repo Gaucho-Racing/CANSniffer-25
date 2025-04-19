@@ -21,7 +21,6 @@ uint32_t lastmsg = 0;
 
 void setup()
 {
-	pinMode (LED_BUILTIN, OUTPUT) ;
 	Serial.begin(115200);
 	delay(100);
 	HWRSerial.begin(115200, SERIAL_8N1);
@@ -35,29 +34,18 @@ void loop()
 	if (can_primary.read(msg))
 	{
 		Serial.println("recieved");
-		Serial.println(msg.id, HEX);
-		/*
-		msg.id = 0x0001;
-		can_primary.write(msg); 
-		*/
+		Serial.println((char*)msg.buf);
 	}
 
 	if (millis() - lastmsg > 1000)
 	{
-		/*
-		msg.id = 0x0001;
+		memcpy(msg.buf, "messaged", 8);
 		msg.len = 8;
-		msg.buf[0] = 0x00;
-		msg.buf[1] = 0x00;
-		msg.buf[2] = 0x00;
-		msg.buf[3] = 0x00;
-		msg.buf[4] = 0x00;
-		msg.buf[5] = 0x00;
-		msg.buf[6] = 0x00;
-		msg.buf[7] = 0x69;*/
-		Serial.println("sent");
+		msg.id = 0x1;
 
 		can_primary.write(msg);
+		Serial.print("sent");
+
 		lastmsg = millis();
 	}
 }
