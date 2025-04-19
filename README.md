@@ -9,4 +9,4 @@ Reads all messages sent over CAN and outputs their data over serial to be displa
 ## Platform IO and Teensy
 This is a project extended from GR24 and uses that board to provide CAN Sniffing capabilities. This is **_NOT_** an STM32-based project.
 
-Accordingly, see `src/main.cpp` for almost all functionality.
+Accordingly, see `src/main.cpp` for almost all functionality. Exact CAN-IDs are almost certainly out of date, try to keep this as general as possible accordingly.
