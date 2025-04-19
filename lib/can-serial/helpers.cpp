@@ -78,7 +78,7 @@ void gen_random(const int len, byte *res) {
     static const char alphanum[] =
         "0123456789"
         "abcdef";
-    for (int i = 0, p = 0; i < len; ++i) {
+    for (int i = 0; i < len; ++i) {
         res[i] = alphanum[int(random(0, sizeof(alphanum) - 1))];
         }
 }
