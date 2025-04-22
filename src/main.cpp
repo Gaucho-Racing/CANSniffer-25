@@ -45,7 +45,7 @@ void loop()
 		msg.id = 0x1;
 
 		can_primary.write(msg);
-		Serial.print("sent");
+		Serial.println("sent");
 
 		lastmsg = millis();
 	}
